@@ -6,7 +6,7 @@ SPARQL
   - Very thorough introduction to the language. Would reccommend reading and referring back to but don't get too caught up in the examples.
 - [_SPARQL Working Group_](https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/): Documentation of SPARQL by its creators
 - Learning Repo on GraphDB
-  - I've created a small repository with toy data corresponding to the examples that you can use. Files used to create the repo are under the **Learning_Repo** folder in this github repository.
+  - I've created a small repository with toy data corresponding to the examples that you can use. Files used to create the repo are under the **Learning_repo** folder in this github repository.
 
 ---
 
