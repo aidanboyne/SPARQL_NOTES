@@ -10,11 +10,8 @@ SPARQL
 
 ---
 
+SPARQL is the query language for RDF, a directed and labeled graph format for representing data.The power of SQARQL and RDF comes from incorporation of standardized ontologies, allowing disparate datasources to be connected via shared terminology. Data is primarily represented in **triples** consisting of a subject, predicate and object.
 
+`dis:00001 rdfs:label "Alzheimer's Disease"`
 
-
-
-SPARQL is the query language for RDF, a directed and labeled graph format for representing data. Data is primarily represented in **triples** consisting of a subject, predicate and object. 
-
-Each subject and predicate must be **URIs** (Universal Resource Identifiers) 
-TODO: add basics, resources, websites
+Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers in all positions of the triple for interoperability. 
