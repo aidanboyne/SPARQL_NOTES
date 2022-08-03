@@ -2,10 +2,46 @@
 
 @prefix dis: <http://learning/diseases#> .
 @prefix drg:  <http://learning/drugs#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix dcterms: <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix sysbio: <http://learning/sysbio#>
+@prefix person:   <http://learning/ns/addressbook#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+# People (modified from ex046.ttl from Bob Ducharme)
+
+person:i0432  
+   person:firstName "Richard" ;
+   person:lastName  "Mutt" ;
+   sysbio:hasDisease dis:00002 ;
+   sysbio:onMedication drg:R0012 ;
+   person:spouse person:i9771 ; 
+   person:doctor person:i02238 .
+
+person:i8301  
+   person:firstName "Rishab" ;
+   person:lastName  "Jain" ;
+   sysbio:hasDisease dis:00001 ;
+   person:doctor person:i02238 .
+
+person:i9533
+   person:firstName "Cindy" ; 
+   person:lastName  "Marshall" ; 
+   sysbio:hasDisease dis:00003 ;
+   sysbio:onMedication drg:P0034 .
+
+person:i9771
+   person:firstName "Andre" ; 
+   person:lastName  "Marshall" ;
+   person:spouse person:i19533 .
+
+person:i02238
+   person:firstName "Linus" ; 
+   person:lastName  "Karlsson" ;
+   dcterms:description "General Practitioner at Skånes Universitetssjukhus, Sweden" ;
+   person:patient person:i0432, person:i9533, person:i8301 .
 
 # Diseases
 
@@ -67,3 +103,16 @@ drg:P0142 rdfs:label "Zafirlukast" ;
 
 sio:SIO_010299 rdfs:label "Disease".
 sio:SIO_010038 rdfs:label "Drug"
+
+person:spouse
+   rdf:type owl:SymmetricProperty ; 
+   rdfs:comment "Identifies someone's spouse" .
+
+person:patient 
+   rdf:type rdf:Property ;
+   rdfs:comment "Identifies a doctor's patient" . 
+
+person:doctor 
+   rdf:type rdf:Property ;
+   rdfs:comment "Identifies a doctor treating the named resource" ;
+   owl:inverseOf person:patient . 
