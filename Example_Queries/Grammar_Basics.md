@@ -1,4 +1,4 @@
-### Grammar Basics
+### SPARQL Query Grammar
 
 Multiple predicates for same subject are separated by **semicolons**. <br>
 Multiple objects for same subject and predicate are separated by **commas**. <br>
