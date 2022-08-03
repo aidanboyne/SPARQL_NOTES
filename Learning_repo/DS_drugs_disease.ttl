@@ -67,12 +67,3 @@ drg:P0142 rdfs:label "Zafirlukast" ;
 
 sio:SIO_010299 rdfs:label "Disease".
 sio:SIO_010038 rdfs:label "Drug"
-
-
-        
-
-
-
-
-         
-        
