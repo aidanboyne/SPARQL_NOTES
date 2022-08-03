@@ -1,0 +1,37 @@
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX bmr: <http://id.zs.com/bmr#>
+PREFIX keyword: <http://purl.uniprot.org/keywords/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX terms: <http://purl.org/dc/terms/> 
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?protein ?geneName ?gda ?disease 
+#Group_concat takes all terms matching variable and groups them by terms matching the GROUP BY variable at the end of the query
+(GROUP_CONCAT(?pubmedID; SEPARATOR = ",") as ?sources)
+#Count can be very slow and requires all terms to be grouped, use sparingly
+(COUNT(?pubmedID) as ?publicaitons)
+where { 
+	?protein up:classifiedWith keyword:202 ; #keyword:202 is uniprot code for cytokine
+            rdf:type bmr:Protein ;
+          	bmr:translatedFrom ?transcript .
+    ?transcript bmr:transcribedFrom ?geneID .
+  #note instead of repeating transcript (it's just a linker vairable) we could write the following at line 18
+  #         bmr:translatedFrom [bmr:transcribedFrom ?geneID] .
+  #this bracket notation can make code more readable
+    ?geneID skos:exactMatch ?gene ;
+            rdf:type bmr:Gene ;
+            ?gda ?diseaseID .
+    ?gda rdf:type bmr:GeneDiseaseAssociation ;
+         sio:SIO_000772 ?pubmedID .
+    ?gene rdfs:label ?geneName .
+    ?diseaseID rdf:type bmr:Disease ;
+               terms:title ?disease ;
+               FILTER(CONTAINS(?disease, "Psor"))
+               #Use built in string functions rather than regex whenever possible, it is much faster
+    
+}
+GROUP BY ?protein ?geneName ?gda ?disease
+ORDER BY DESC (?publicaitons)
+LIMIT 50 
