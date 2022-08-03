@@ -7,6 +7,7 @@ SPARQL
 - [_SPARQL Working Group_](https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/): Documentation of SPARQL by its creators
 - Learning Repo on GraphDB
   - I've created a small repository with toy data corresponding to the examples that you can use. Files used to create the repo are under the **Learning_repo** folder in this github repository.
+- VS Code has SPARQL support and is nice for sketching out ideas. GraphDB's editor is great for exploration but can be a bit slow to actually write long queries in.
 
 ---
 
@@ -14,4 +15,6 @@ SPARQL is the query language for RDF, a directed and labeled graph format for re
 
 `dis:00001 rdfs:label "Alzheimer's Disease"`
 
-Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers (URIs) in all positions of the triple for interoperability. Note that you _cannot_ use strings (or any other type of literal such as integer, boolean, float...) as subject or preposition - SPARQL processors will throw an error message.
+Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers (URIs) in all positions of the triple for interoperability. Note that you _cannot_ use strings (or any other type of literal such as integer, boolean, float...) as subject or preposition - SPARQL processors will throw an error message. Note that a full URI looks something like `<http://www.w3.org/2000/01/rdf-schema#label>`. The `rdfs:` prefix takes the place of `<http://www.w3.org/2000/01/rdf-schema#>` to improve readability.
+
+
