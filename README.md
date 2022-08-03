@@ -14,4 +14,4 @@ SPARQL is the query language for RDF, a directed and labeled graph format for re
 
 `dis:00001 rdfs:label "Alzheimer's Disease"`
 
-Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers in all positions of the triple for interoperability. 
+Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers (URIs) in all positions of the triple for interoperability. Note that you _cannot_ use strings (or any other type of literal such as integer, boolean, float...) as subject or preposition - SPARQL processors will throw an error message.
