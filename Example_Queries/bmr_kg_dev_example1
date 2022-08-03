@@ -1,0 +1,42 @@
+#For the gene IRAK4, find its NCBI ID and all its Uniprots IDS 
+#the gene IRAK4 has the ensembl ID ENSG00000198001
+
+#Try to come up with a query then check back and see how yours compares
+
+#Solution 1
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX bmr: <http://id.zs.com/bmr#> 
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ensembl: <http://rdf.ebi.ac.uk/resource/ensembl/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX id: <http://identifiers.org/>
+SELECT DISTINCT ?gene ?geneName ?ncbiID ?uniprotID
+WHERE { 
+    VALUES ?geneID { ensembl:ENSG00000198001 }.
+	 ?geneID skos:exactMatch ?gene .
+     ?gene rdf:type id:ncbigene ;
+           rdfs:label ?geneName ;
+           dc:identifier ?ncbiID ;
+           skos:closeMatch ?uniprotID .
+    ?uniprotID rdf:type id:uniprot .
+} limit 100 
+
+#Solution 2 (Cleaner but less readable)
+
+PREFIX ensembl: <http://rdf.ebi.ac.uk/resource/ensembl/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX identifiers: <http://identifiers.org/>
+
+SELECT DISTINCT ?xref ?xrefType
+WHERE {
+GRAPH <http://id.zs.com/ensembl> {
+ensembl:ENSG00000198001 rdfs:seeAlso ?xref .
+    ?xref rdf:type ?xrefType .  
+    
+    FILTER(?xrefType  IN (identifiers:uniprot,identifiers:ncbigene))
+}
+} limit 100
