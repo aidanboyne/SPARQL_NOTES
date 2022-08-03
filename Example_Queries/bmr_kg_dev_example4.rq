@@ -1,0 +1,63 @@
+#List all genes (Ensembl ID and gene name/label) on chromosome 2, as well as their start and end positions. Then sort them by their start position. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Possible solution 1
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+PREFIX faldo: <http://biohackathon.org/resource/faldo#> 
+PREFIX bmr: <http://id.zs.com/bmr#> 
+
+SELECT DISTINCT ?gene ?label ?description ?start ?end
+{ 
+    VALUES (?chromosome ?strand) {(<http://rdf.ebi.ac.uk/resource/ensembl/102/homo_sapiens/GRCh38/2> faldo:ForwardStrandPosition)}.  
+    ?location faldo:reference ?chromosome ;
+              faldo:begin [a ?strand ; faldo:position ?start] ;
+              faldo:end [a ?strand; faldo:position ?end] .
+    ?chromosome a bmr:GenomicRegion .
+    ?gene a bmr:Gene; 
+          a ?type ; 
+        rdfs:label ?label ; 
+        dc:description ?description ; 
+        faldo:location ?location .  
+}
+
+ORDER BY ASC(?start)
+
+# Possible solution 2
+
+PREFIX ensembl: <http://rdf.ebi.ac.uk/resource/ensembl/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ 
+select distinct ?chromosome ?type ?gen ?genID ?begin_position_chr ?end_position_chr ?label_position
+where {
+    ?genID rdf:type ?type.
+    FILTER(?type = obo:SO_0000704)      
+GRAPH <http://id.zs.com/ensembl> {
+        ?genID rdfs:label ?gen;
+               faldo:location ?gen_location.
+        ?gen_location rdfs:label ?label_position;
+                      faldo:begin [faldo:position ?begin_position_chr];
+                      faldo:end [faldo:position ?end_position_chr].
+        BIND (STRBEFORE(str(?label_position),":") AS ?chromosome)
+        FILTER(str(?chromosome) = "chromosome 2")
+}
+}
+ORDER BY ?begin_position_chr
+
+LIMIT 100
