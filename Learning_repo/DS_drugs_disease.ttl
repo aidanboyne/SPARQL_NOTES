@@ -1,0 +1,78 @@
+# filename: DS_drugs_disease.ttl
+
+@prefix dis: <http://learning/diseases#> .
+@prefix drg:  <http://learning/drugs#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix dcterms: <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix sysbio: <http://learning/sysbio#>
+
+# Diseases
+
+dis:00001 rdfs:label "Alzheimer's Disease" ;
+        rdfs:seeAlso dis:00231 ;
+        rdf:type sio:SIO_010299 ;
+        rdf:subtype  "Neurological" ; 
+        sio:SIO_000139 drg:N0006 ;
+        sysbio:hasSymptom "Memory Loss" . 
+
+dis:00231 rdfs:label "Dementia" ;
+          rdfs:seeAlso dis:00001 ;
+          rdf:type sio:SIO_010299 ;
+          rdf:subtype "Neurological" ;
+          sio:SIO_000139 drg:N0006 ;
+          sio:SIO_000139 drg:N0007 ;
+          sysbio:hasSymptom "Memory Loss" .
+
+dis:00002 rdfs:label "Arthritis" ;
+        rdf:type sio:SIO_010299 ;
+        rdf:subtype  "Rheumatologic" ; 
+        sio:SIO_000139 drg:R0012 ;
+        sysbio:hasSymptom "Joint Pain" . 
+
+dis:00003 rdfs:label "Asthma" ; 
+        rdf:type sio:SIO_010299 ;
+        rdf:subtype  "Pulmonary" ; 
+        sio:SIO_000139 drg:P0142, drg:P0120, drg:0034 ;
+        sysbio:hasSymptom "Coughing" . 
+
+# Drugs
+
+drg:N0006 rdfs:label "Donepezil" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Central acetylcholinesterase inhibitor" .
+
+drg:N0007 rdfs:label "Galantamine" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Central acetylcholinesterase inhibitor" .
+
+drg:R0012 rdfs:label "Prednisone" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Glucocorticoid" .
+
+drg:P0034 rdfs:label "Albuterol" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Inhaled beta-2-agonist" .
+
+drg:P0120 rdfs:label "Pulmicort" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Inhaled glucocorticoid" .
+
+drg:P0142 rdfs:label "Zafirlukast" ;
+         rdf:type sio:SIO_010038;
+         dcterms:type "Leukotriene receptor antagonists" .
+
+
+# Definitions
+
+sio:SIO_010299 rdfs:label "Disease".
+sio:SIO_010038 rdfs:label "Drug"
+
+
+        
+
+
+
+
+         
+        
