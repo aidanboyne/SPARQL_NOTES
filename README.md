@@ -9,7 +9,7 @@ SPARQL
   - I've created a small repository with toy data that you can use. Files used to create the repo are under the **Learning_repo** folder in this github repository.
   - There are also several questions and example answers for the main KG that you can try to figure out and compare with solutions the team has written.
 - VS Code has SPARQL support and is nice for sketching out ideas. GraphDB's editor is great for exploration but can be a bit slow to actually write long queries in.
-- For a totally fresh start to query grammar, check [here](https://github.com/aidanboyne/SPARQL_NOTES/Example_Queries/Grammar_Basics.md)
+- For a totally fresh start to query grammar, check [here](https://github.com/aidanboyne/SPARQL_NOTES/blob/57896da77396fadc0b7ccff643dfe291a2dab167/Example_Queries/Grammar_Basics.md).
 
 ---
 
