@@ -1,0 +1,27 @@
+#For the same gene IRAK4, find its chromosome and the position on that chromosome (start and end)
+
+
+
+
+
+
+
+
+
+
+#Possible Solution
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX bmr: <http://id.zs.com/bmr#> 
+PREFIX ensembl: <http://rdf.ebi.ac.uk/resource/ensembl/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT DISTINCT ?geneName ?chromosome ?start ?end
+WHERE { 
+    VALUES ?geneID { ensembl:ENSG00000198001 }.
+	 ?geneID faldo:location ?chromosome ;
+             rdfs:label ?geneName .
+     ?chromosome faldo:begin ?start ;
+                 faldo:end ?end .
+} limit 100 
