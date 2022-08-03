@@ -1,0 +1,33 @@
+#For the gene IRAK4 list all its transcripts and the exons of each of those transcripts
+#the gene IRAK4 has the ensembl ID ENSG00000198001
+
+
+
+
+
+
+
+# Possible solution
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX bmr: <http://id.zs.com/bmr#> 
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ensembl: <http://rdf.ebi.ac.uk/resource/ensembl/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX id: <http://identifiers.org/>
+
+SELECT DISTINCT ?geneName ?transcript ?transcriptName (GROUP_CONCAT(?exonID; SEPARATOR = "\n") as ?exons)
+WHERE { 
+    VALUES ?geneID { ensembl:ENSG00000198001 }.
+	 ?geneID skos:exactMatch ?gene .
+     ?gene rdfs:label ?geneName .
+     ?transcript bmr:transcribedFrom ?geneID ;
+		rdf:type bmr:Transcript ;
+		rdfs:label ?transcriptName .
+	 ?exon bmr:partOf ?transcript ;
+           dc:identifier ?exonID .
+}
+GROUP BY ?geneName ?transcript ?transcriptName
+LIMIT 100
