@@ -6,7 +6,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix dcterms: <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/> .
-@prefix sysbio: <http://learning/sysbio#>
+@prefix sysbio: <http://learning/sysbio#> .
 @prefix person:   <http://learning/ns/addressbook#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
@@ -102,7 +102,7 @@ drg:P0142 rdfs:label "Zafirlukast" ;
 # Definitions
 
 sio:SIO_010299 rdfs:label "Disease".
-sio:SIO_010038 rdfs:label "Drug"
+sio:SIO_010038 rdfs:label "Drug" .
 
 person:spouse
    rdf:type owl:SymmetricProperty ; 
