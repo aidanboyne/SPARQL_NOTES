@@ -15,31 +15,38 @@
 person:i0432  
    person:firstName "Richard" ;
    person:lastName  "Mutt" ;
+   person:dateOfBirth "1971-07-07"^^xsd:date ;
    sysbio:hasDisease dis:00002 ;
    sysbio:onMedication drg:R0012 ;
-   person:spouse person:i9771 ; 
    person:doctor person:i02238 .
-
+   
 person:i8301  
    person:firstName "Rishab" ;
    person:lastName  "Jain" ;
+   person:dateOfBirth "1952-02-27"^^xsd:date ;
    sysbio:hasDisease dis:00001 ;
    person:doctor person:i02238 .
+   
 
 person:i9533
    person:firstName "Cindy" ; 
-   person:lastName  "Marshall" ; 
+   person:lastName  "Marshall" ;
+   person:dateOfBirth "1993-01-03"^^xsd:date ;
    sysbio:hasDisease dis:00003 ;
-   sysbio:onMedication drg:P0034 .
+   sysbio:onMedication drg:P0034 ;
+   person:spouse person:i9771 ; 
+   person:doctor person:i02238 .
 
 person:i9771
    person:firstName "Andre" ; 
    person:lastName  "Marshall" ;
-   person:spouse person:i19533 .
+   person:dateOfBirth "1989-11-13"^^xsd:date ;
+   person:spouse person:i9533 .
 
 person:i02238
    person:firstName "Linus" ; 
    person:lastName  "Karlsson" ;
+   person:dateOfBirth "1966-06-14"^^xsd:date ;
    dcterms:description "General Practitioner at Skånes Universitetssjukhus, Sweden" ;
    person:patient person:i0432, person:i9533, person:i8301 .
 
