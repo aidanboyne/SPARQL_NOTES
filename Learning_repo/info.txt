@@ -1,1 +1,0 @@
-All examples for GDB repo are kept here as turtle (.ttl) files. To upload, go to GDB and use import RDF data, selecting the files you want.
