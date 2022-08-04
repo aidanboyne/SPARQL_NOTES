@@ -17,5 +17,34 @@ SPARQL is the query language for RDF, a directed and labeled graph format for re
 
 `dis:00001 rdfs:label "Alzheimer's Disease"`
 
-Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers (URIs) in all positions of the triple for interoperability. Note that you _cannot_ use strings (or any other type of literal such as integer, boolean, float...) as subject or preposition - SPARQL processors will throw an error message. Note that a full URI looks something like `<http://www.w3.org/2000/01/rdf-schema#label>`. The `rdfs:` prefix takes the place of `<http://www.w3.org/2000/01/rdf-schema#>` to improve readability.
+Is an example of a triple with subject `dis:00001`, predicate `rdfs:label`, and object `"Alzheimer's Disease"`. Although "Alzheimer's Disease" is a string, it is usually preferable to use Universal Resource Identifers (URIs) in all positions of the triple for interoperability and you _cannot_ use strings (or any other type of literal such as integer, boolean, float...) as subject or preposition - SPARQL processors will throw an error message.
+
+Note that a full URI looks something like `<http://www.w3.org/2000/01/rdf-schema#label>`. The `rdfs:` prefix takes the place of `<http://www.w3.org/2000/01/rdf-schema#>` to improve readability. To use these in a query, add `PREFIX abbv:partial_uri` to the top of your code. For example, the following two queries ask for identical informaiton (the full name of all men in a hypothetical database), yet it's a lot easier to understand the second query.
+
+```
+SELECT ?Name 
+WHERE {
+  ?ID <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://learning/ns/addressbook#man> ;
+      <http://learning/ns/addressbook#firstName> ?firstName ;
+      <http://learning/ns/addressbook#lastName> ?lastName .
+  BIND ( CONCAT(?firstName, " ", ?lastname) AS ?Name)
+}
+```
+
+Versus
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX person: <http://learning/ns/addressbook#>
+
+SELECT ?Name 
+WHERE {
+  ?ID rdf:type person:man ;
+      person:firstName ?firstName ;
+      person:lastName ?lastName .
+  BIND ( CONCAT(?firstName, " ", ?lastname) AS ?Name)
+}
+```
+
+Also, notice that SPARQL includes bulit in functions for working with strings such as `CONCAT` and variable assignment `BIND`. There are a ton of helpful functions out there and most of them are covered in _Learning SPARQL_.
 
