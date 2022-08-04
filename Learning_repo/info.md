@@ -1,6 +1,6 @@
 ## Patients, Drugs, and Diseases
 ---
-This (very small) toy dataset includes data on people and their relationships, diseases, and drugs. To start, it can be helpful to explore the data with the following query.
+This (very small) toy dataset under the DS_Learning repo on GDB includes data on people and their relationships, diseases, and drugs. To start, it can be helpful to explore the data with the following query.
 
 ```
 SELECT *
