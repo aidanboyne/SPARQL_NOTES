@@ -5,7 +5,7 @@ SPARQL
 - _Learning Sparql, 2nd Edition_ by Bob DuCharme: [Download](https://oiipdf.com/learning-sparql-2nd-edition)
   - Very thorough introduction to the language. Would reccommend reading and referring back to but don't get too caught up in the examples.
 - [_SPARQL Working Group_](https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/): Documentation of SPARQL by its creators
-- Learning Repo on GraphDB
+- [Learning Repo](https://github.com/aidanboyne/SPARQL_NOTES/blob/89a9e2205003ad47f6412d1c825d26697b4e2d9a/Learning_repo/info.md) on GraphDB
   - I've created a small repository with toy data that you can use. Files used to create the repo are under the **Learning_repo** folder in this github repository.
   - There are also several questions and example answers for the main KG that you can try to figure out and compare with solutions the team has written.
 - VS Code has SPARQL support and is nice for sketching out ideas. GraphDB's editor is great for exploration but can be a bit slow to actually write long queries in.
