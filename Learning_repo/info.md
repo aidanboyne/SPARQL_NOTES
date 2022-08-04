@@ -37,6 +37,7 @@ person:i3625
    person:dateOfBirth "1960-11-25"^^xsd:date ;
    sysbio:hasDisease dis:00002 ;
 }
+WHERE{}
 ```
 
 Note that all examples uploaded to GDB repo are kept here as turtle (.ttl) files. To upload additional triples (such as those found in Bob DuCharme's book), go to GDB and use import RDF data, selecting the files you want.
