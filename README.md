@@ -10,7 +10,7 @@ SPARQL
   - There are also several questions and example answers for the main KG that you can try to figure out and compare with solutions the team has written.
 - VS Code has SPARQL support and is nice for sketching out ideas. GraphDB's editor is great for exploration but can be a bit slow to actually write long queries in.
 - For a totally fresh start to query grammar, check [here](https://github.com/aidanboyne/SPARQL_NOTES/blob/57896da77396fadc0b7ccff643dfe291a2dab167/Example_Queries/Grammar_Basics.md).
-- For info on property paths, see the W3 website or [here] (https://github.com/aidanboyne/SPARQL_NOTES/blob/9adabe3dde6b53db77f5b478eadd3adaa3e37f2e/Learning_repo/Property_Paths.md)
+- For info on property paths, see the W3 website or [here](https://github.com/aidanboyne/SPARQL_NOTES/blob/9adabe3dde6b53db77f5b478eadd3adaa3e37f2e/Learning_repo/Property_Paths.md)
 - If it looks like your query should work and you can't figure out what is wrong, check your spelling! Usually spelling/capitalizaiton errors in variables are the culprit.
 
 ---
